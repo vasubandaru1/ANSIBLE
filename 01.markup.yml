@@ -1,0 +1,13 @@
+- hosts: Databases
+  tasks:
+    - ansible.builtin.debug
+       msg: "hello world"
+
+
+
+
+- name: play2
+    hosts: APPLICATION
+    roles:
+      - role1
+      - role2
