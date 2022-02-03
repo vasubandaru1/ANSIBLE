@@ -5,7 +5,7 @@
       ansible.builtin.debug:
         msg: "task1"
 
-    - name: printtask2
+    - name: print task2
         ansible.builtin.debug:
         msg: "task2"
 
