@@ -1,44 +1,56 @@
-- name: play level variable
-  hosts: all
-  vars:
-    URL: play.example.com
-  tasks:
-    - name: Play level variable
-      ansible.builtin.debug:
-        msg: URL in task1 = {{URL}}
+#- name: play level variable
+#  hosts: all
+#  vars:
+#    URL: play.example.com
+#  tasks:
+#    - name: Play level variable
+#      ansible.builtin.debug:
+#        msg: URL in task1 = {{URL}}
+#
+#    - name: access url in task2
+#      ansible.builtin.debug:
+#        msg: URL in task2 = {{URL}}
+#
+#- name: Acess URL from another file
+#  hosts: all
+#  vars_files:
+#    - var-from-file.yml
+#  tasks:
+#    - name: access url in task1
+#      ansible.builtin.debug:
+#          msg: URL in task1 = {{URL}}
+#
+#- name: Access URL from task
+#  hosts: all
+#  tasks:
+#    - name: access url in task1
+#      ansible.builtin.debug:
+#        msg: URL = {{URL}}
+#      vars:
+#          URL: tasks.google.com
+#
+#- name: Access URL from task
+#  hosts: all
+#  tasks:
+#    - name: access url in task1
+#      ansible.builtin.debug:
+#        msg: URL = {{URL}}
+#
+#- name: Access URL from task
+#  hosts: all
+#  tasks:
+#    - name: access CLI
+#      ansible.builtin.debug:
+#        msg: URL = {{URL}}
 
-    - name: access url in task2
-      ansible.builtin.debug:
-        msg: URL in task2 = {{URL}}
-
-- name: Acess URL from another file
-  hosts: all
-  vars_files:
-    - var-from-file.yml
-  tasks:
-    - name: access url in task1
-      ansible.builtin.debug:
-          msg: URL in task1 = {{URL}}
-
-- name: Access URL from task
+- name: Run time variables
   hosts: all
   tasks:
-    - name: access url in task1
-      ansible.builtin.debug:
-        msg: URL = {{URL}}
-      vars:
-          URL: tasks.google.com
+    - name: Access uptime
+      ansible.builtin.shell: OUT
+      register: OUT
 
-- name: Access URL from task
-  hosts: all
-  tasks:
-    - name: access url in task1
+    - name: print output
       ansible.builtin.debug:
-        msg: URL = {{URL}}
+        msg: "{{OUT}}"
 
-- name: Access URL from task
-  hosts: all
-  tasks:
-    - name: access CLI
-      ansible.builtin.debug:
-        msg: URL = {{URL}}
