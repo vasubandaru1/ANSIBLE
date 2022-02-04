@@ -8,5 +8,5 @@
         msg: url in task1 {{URL}}
 
     - name: access url in task2
-        ansible.builtin.debug
+      ansible.builtin.debug
         msg: url in task2 {{URL}}
