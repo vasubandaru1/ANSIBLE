@@ -3,7 +3,7 @@
   vars:
     URL: play.example.com
   tasks:
-    - name: access url in task1
+    - name: Play level variable
       ansible.builtin.debug:
         msg: URL in task1 = {{URL}}
 
@@ -11,7 +11,7 @@
       ansible.builtin.debug:
         msg: URL in task2 = {{URL}}
 
-- name: var from a file
+- name: Acess URL from another file
   hosts: all
   vars_files:
     - var-from-file.yml
@@ -20,7 +20,7 @@
       ansible.builtin.debug:
           msg: URL in task1 = {{URL}}
 
-- name: var from a file
+- name: Access URL from task
   hosts: all
   tasks:
     - name: access url in task1
@@ -28,3 +28,10 @@
         msg: URL = {{URL}}
       vars:
           URL: tasks.google.com
+
+- name: Access URL from task
+  hosts: all
+  tasks:
+    - name: access url in task1
+      ansible.builtin.debug:
+        msg: URL = {{URL}}
