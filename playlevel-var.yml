@@ -47,7 +47,7 @@
   hosts: all
   tasks:
     - name: Access uptime
-      ansible.builtin.shell: OUT
+      ansible.builtin.shell: uptime
       register: OUT
 
     - name: print output
