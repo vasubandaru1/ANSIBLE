@@ -1,6 +1,6 @@
 - name: play level variable
   hosts: all
-  var:
+  vars:
     URL: play.example.com
   tasks:
     - name: access url in task1
