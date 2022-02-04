@@ -4,9 +4,9 @@
     URL: play.example.com
   tasks:
     - name: access url in task1
-      ansible.builtin.debug
+      ansible.builtin.debug:
         msg: URL in task1 = {{URL}}
 
     - name: access url in task2
-      ansible.builtin.debug
+      ansible.builtin.debug:
         msg: URL in task2 = {{URL}}
