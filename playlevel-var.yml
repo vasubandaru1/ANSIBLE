@@ -10,3 +10,12 @@
     - name: access url in task2
       ansible.builtin.debug:
         msg: URL in task2 = {{URL}}
+
+- name: var from a file
+  hosts: all
+  vars_files:
+    - var-from-file.yml
+  tasks:
+    - name: access url in task1
+      ansible.builtin.debug:
+          msg: URL in task1 = {{URL}}
