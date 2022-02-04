@@ -1,3 +1,7 @@
 - name: print hello from role
   ansible.builtin.debug:
     msg: "HELLO"
+
+- name: variable
+  ansible.builtin.debug:
+    msg: URL = "{{URL}}"
