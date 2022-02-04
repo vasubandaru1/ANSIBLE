@@ -35,3 +35,10 @@
     - name: access url in task1
       ansible.builtin.debug:
         msg: URL = {{URL}}
+
+- name: Access URL from task
+  hosts: all
+  tasks:
+    - name: access CLI
+      ansible.builtin.debug:
+        msg: URL = {{URL}}
