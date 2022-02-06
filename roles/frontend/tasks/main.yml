@@ -1,0 +1,3 @@
+- name: print frontend
+  debug:
+    msg: frontend
