@@ -8,11 +8,11 @@ catalogue.internal.roboshop
 payment.internal.roboshop
 [shipping]
 shipping.internal.roboshop
-[mysql]
-mysql.internal.roboshop
+[mongodb]
+mongodb.internal.roboshop
 [redis]
 redis.internal.roboshop
 [rabbitmq]
 rabbitmq.internal.roboshop
-[mongodb]
-mongodb.internal.roboshop
+[user]
+user.internal.roboshop
