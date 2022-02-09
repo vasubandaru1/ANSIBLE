@@ -10,7 +10,9 @@ count=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$1" | jq ".Re
 
  if [ $count -eq 0 ]; then
    aws ec2 run-instances --launch-template launchTemplateId=lt-089978c89270e0069,Version=1  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$1}]" | jq
+
    else
+
      echo -e "\e[1;33m$1 Instance already exists\e[0m"
      return
 
