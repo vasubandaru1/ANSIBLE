@@ -30,5 +30,5 @@ UPDATE_DNS_RECORDS $1
      CREATE $component
      done
   else
-    create $1
+    CREATE $1
  fi
