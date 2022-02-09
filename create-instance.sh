@@ -1,5 +1,11 @@
 #!/bin/bash
 
+UPDATE_DNS_RECORDS() {
+   IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$1" | jq ".Reservations[].Instances[].PrivateIpAddress" | grep -v null | wc -l)
+  sed -e "s/DNSname/$1-dev.roboshop.internal/" -e "s/Ipaddress/$(IP)/" record.jsm >/tmp/record.jsm
+  aws route53 change-resource-record-sets --hosted-zone-id Z10262683C43F5P8H0WOJ
+   --change-batch file:///tmp/record.jsm | jq
+}
 CREATE() {
 count=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$1" | jq ".Reservations[].Instances[].PrivateIpAddress" | grep -v null | wc -l)
 
@@ -13,10 +19,7 @@ count=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$1" | jq ".Re
 
  sleep 5
 
- IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$1" | jq ".Reservations[].Instances[].PrivateIpAddress" | grep -v null | wc -l)
-sed -e "s/DNSname/$1-dev.roboshop.internal/" -e "s/Ipaddress/$(IP)/" record.jsm >/tmp/record.jsm
-aws route53 change-resource-record-sets --hosted-zone-id Z10262683C43F5P8H0WOJ
- --change-batch file:///tmp/record.jsm | jq
+UPDATE_DNS_RECORDS $1
 
  }
 
